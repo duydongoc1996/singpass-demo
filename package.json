@@ -1,0 +1,25 @@
+{
+  "name": "singpass-demo-app",
+  "version": "1.0.0",
+  "description": "This is Singpass Demo App",
+  "main": "server.js",
+  "scripts": {
+    "sandbox": "node server.js sandbox"
+  },
+  "author": "Duydo",
+  "license": "ISC",
+  "dependencies": {
+    "@govtechsg/singpass-myinfo-oidc-helper": "^7.1.4",
+    "body-parser": "^1.19.0",
+    "colors": "^1.4.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.17.1",
+    "lodash": "^4.17.21",
+    "nanoid": "^3.3.4",
+    "path": "^0.12.7",
+    "pug": "^3.0.2",
+    "uuid": "^9.0.0"
+  }
+}

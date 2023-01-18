@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script
+      type="text/javascript"
+      src="https://stg-id.singpass.gov.sg/static/ndi_embedded_auth.js?fa=false"
+    ></script>
+    <title>QR Login Page</title>
+  </head>
+
+  <script>
+    async function getEnv() {
+      // const HOST = 'http://localhost:'
+      // const HOST = 'https://api-ocm.southeastasia.cloudapp.azure.com/demo'
+
+      const response = await fetch('/init-qr-session')
+      return response.json()
+    }
+
+    async function init() {
+      const initQR = await getEnv()
+
+      const { authParams, authParamsSupplier, additionalOptions } = initQR
+
+      /**
+       * initAuthSession(DOMElementID, authParams, authParamsSupplier, onError, additionalOptions) returns String
+       **/
+      const initAuthSessionResponse = window.NDI.initAuthSession(
+        'qrcode',
+        authParams,
+        () => authParamsSupplier,
+        (errorId, message) => {
+          console.log('error')
+          console.log(`onError. errorId:${errorId} message:${message}`)
+        },
+        additionalOptions,
+      )
+
+      console.debug('initAuthSession: ', initAuthSessionResponse)
+    }
+  </script>
+
+  <body onload="init()">
+    <h1>Login with Singpass Embeded QR Code</h1>
+    <div id="qrcode"></div>
+  </body>
+</html>
