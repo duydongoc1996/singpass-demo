@@ -10,17 +10,17 @@
     <h1>Login successful</h1>
 
     <p>
-      authCode:
-      <span id="authCode"></span>
+      code:
+      <span id="code"></span>
     </p>
     <p>
       state:
       <span id="state"></span>
     </p>
 
-    <button onclick="getPersonData()">Get Person Data from Singpass</button>
+    <button onclick="submitAuthCode()">Get NRIC from Singpass</button>
 
-    <textarea id="resp" disabled cols="80" rows="60"></textarea>
+    <div><textarea id="resp" disabled cols="80" rows="60"></textarea></div>
 
     <script>
       /***************************
@@ -33,8 +33,10 @@
       document.getElementById('code').innerHTML = params.code
       document.getElementById('state').innerHTML = params.state
 
-      async function getPersonData() {
-        const HOST = 'https://api-ocm.southeastasia.cloudapp.azure.com/demo'
+      async function submitAuthCode() {
+        // const HOST = 'http://localhost:3300'
+        const HOST =
+          'https://apiv2ocm-develop.southeastasia.cloudapp.azure.com/demo'
 
         const resp = await fetch(HOST + '/auth-code', {
           headers: {

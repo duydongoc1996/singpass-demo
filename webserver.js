@@ -35,8 +35,18 @@ app.post('/auth-code', async (req, res) => {
   console.log('success: ', success)
   console.log('data: ', data)
 
-  if (success) res.redirect('/qr-login-success.html')
-  else res.redirect('/qr-login-failed.html')
+  if (success) {
+    res.status(200).json({
+      success,
+      data: {
+        ...data,
+        access_token: 'this is access_token',
+        refresh_token: 'this is refresh_token',
+      },
+    })
+  } else {
+    res.status(403).send()
+  }
 })
 
 /*****************
