@@ -14,8 +14,9 @@
 
   <script>
     async function getEnv() {
-      const HOST = 'http://localhost:3300'
-      // const HOST = 'https://api-ocm.southeastasia.cloudapp.azure.com/demo'
+      // const HOST = 'http://localhost:3300'
+      const HOST =
+        'https://apiv2ocm-develop.southeastasia.cloudapp.azure.com/demo'
 
       const response = await fetch(HOST + '/init-qr-session')
       return response.json()
